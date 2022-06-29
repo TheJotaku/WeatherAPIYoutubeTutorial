@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapGet("/observations/{zip}", (string zip) =>
+app.MapGet("/observations/{zip}", (string zip, [FromQuery] int? days) =>
 {
     return Results.Ok(zip);
 });
